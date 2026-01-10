@@ -4,7 +4,7 @@ setlocal enabledelayedexpansion
 :: A versão em .bat é mais simples, não verifica códigos de saída.
 :: Quebras de linha também são ignoradas ao comparar resultados.
 
-set NEXUS=..\build\Debug\nx.exe
+set NEXUS=..\build\Debug\Ter.exe
 if not exist "%NEXUS%" (
     echo Erro: interpretador Nexus nao encontrado em %NEXUS%
     echo Por favor, compile o projeto primeiro
