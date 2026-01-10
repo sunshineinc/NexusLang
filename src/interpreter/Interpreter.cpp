@@ -64,7 +64,7 @@ std::any Interpreter::visitUnaryExpr(std::shared_ptr<Unary> expr){
     case TokenType::MENOS:
       checkNumberOperand(expr->oper, right);
       return -std::any_cast<double>(right);
-    case TokenType::TILDE:
+    case TokenType::TIL:
       i_right = doubleToInt(expr->oper,right);
       return static_cast<double>(~i_right);
     default:
@@ -219,23 +219,23 @@ std::any Interpreter::visitBinaryExpr(std::shared_ptr<Binary> expr){
   int64_t i_left, i_right;
 
   switch (expr->oper.type) {
-    case TokenType::GREATER:
+    case TokenType::MAIOR:
       checkNumberOperands(expr->oper, left, right);
       return std::any_cast<double>(left) > std::any_cast<double>(right);
-    case TokenType::GREATER_EQUAL:
+    case TokenType::MAIOR_IGUAL:
       checkNumberOperands(expr->oper, left, right);
       return std::any_cast<double>(left) >= std::any_cast<double>(right);
-    case TokenType::GREATER_GREATER:
+    case TokenType::MAIOR_MAIOR:
       i_left = doubleToInt(expr->oper,left);
       i_right = doubleToInt(expr->oper,right);
       return static_cast<double>(i_left >> i_right);
-    case TokenType::LESS:
+    case TokenType::MENOR:
       checkNumberOperands(expr->oper, left, right);
       return std::any_cast<double>(left) < std::any_cast<double>(right);
-    case TokenType::LESS_EQUAL:
+    case TokenType::MENOR_IGUAL:
       checkNumberOperands(expr->oper, left, right);
       return std::any_cast<double>(left) <= std::any_cast<double>(right);
-    case TokenType::LESS_LESS:
+    case TokenType::MENOR_MENOR:
       i_left = doubleToInt(expr->oper,left);
       i_right = doubleToInt(expr->oper,right);
       return static_cast<double>(i_left << i_right);
@@ -254,31 +254,31 @@ std::any Interpreter::visitBinaryExpr(std::shared_ptr<Binary> expr){
 
       throw RuntimeError{expr->oper, "Operandos nao sao do mesmo tipo"};
 
-    case TokenType::PERCENT:
+    case TokenType::PORCENTAGEM:
       checkNumberOperands(expr->oper, left, right);
       return fmod(std::any_cast<double>(left), std::any_cast<double>(right));
-    case TokenType::AMPERSAND:
+    case TokenType::ECOMERCIAL:
       i_left = doubleToInt(expr->oper,left);
       i_right = doubleToInt(expr->oper,right);
       return static_cast<double>(i_left & i_right);
-    case TokenType::CARET:
+    case TokenType::ACENTOCHAPEU:
       i_left = doubleToInt(expr->oper,left);
       i_right = doubleToInt(expr->oper,right);
       return static_cast<double>(i_left ^ i_right);
-    case TokenType::VBAR:
+    case TokenType::BARRAV:
       i_left = doubleToInt(expr->oper,left);
       i_right = doubleToInt(expr->oper,right);
       return static_cast<double>(i_left | i_right);
-    case TokenType::STAR:
+    case TokenType::ASTERISCO:
       checkNumberOperands(expr->oper, left, right);
       return std::any_cast<double>(left) * std::any_cast<double>(right);
-    case TokenType::SLASH:
+    case TokenType::BARRA:
       checkNumberOperands(expr->oper, left, right);
       return std::any_cast<double>(left) / std::any_cast<double>(right);
-    case TokenType::BANG_EQUAL:
+    case TokenType::BANG_IGUAL:
       checkNumberOperands(expr->oper, left, right);
       return !isEqual(left, right);
-    case TokenType::EQUAL_EQUAL:
+    case TokenType::IGUAL_IGUAL:
       return isEqual(left, right);
     default:
       return {};
@@ -380,7 +380,7 @@ std::any Interpreter::visitIfStmt(std::shared_ptr<Statement::If> stmt){
 
 std::any Interpreter::visitLogicalExpr(std::shared_ptr<Logical> expr){
   std::any left = evaluate(expr->left);
-  if(expr->oper.type == TokenType::OR){
+  if(expr->oper.type == TokenType::OU){
     if(isTruthy(left)) return left;
   }else{
     if(!isTruthy(left)) return left;
@@ -493,7 +493,7 @@ std::any Interpreter::visitSetExpr(std::shared_ptr<Set> expr){
 
 
 std::any Interpreter::visitIncludeStmt(std::shared_ptr<Statement::Include> stmt){
-  if(stmt->keyword.type != TokenType::INCLUDE){
+  if(stmt->keyword.type != TokenType::INCLUIR){
     return {};
   }
   return {};
