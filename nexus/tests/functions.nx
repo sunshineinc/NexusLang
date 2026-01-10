@@ -1,0 +1,19 @@
+definir print(str){
+  saida(str);
+}
+
+definir add(x, y){
+  retorne x + y;
+}
+
+definir increment(a){
+  retorne ++a;
+}
+
+print("My content"); // My content
+saida(add(3, 9)); // 12
+
+var result = increment(6);
+saida(result); // 7
+
+saida(increment(add(3,9))) //13

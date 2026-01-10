@@ -1,0 +1,15 @@
+var a=2;
+var b=3;
+
+saida(a+b);
+saida(a-b);
+saida(a*b);
+saida(a/b);
+saida(a%b);
+saida(a&b);
+saida(a|b);
+saida(a^b);
+/* TODO
+saida(a<<b);
+saida(a>>b);
+*/
