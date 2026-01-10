@@ -1,8 +1,8 @@
 #!/bin/bash
 
-TERLANG="../build/ter"
-if [ ! -f "$TERLANG" ]; then
-    echo "Erro: interpretador Nexus não encontrado em $TERLANG"
+NEXUS="../build/nx"
+if [ ! -f "$NEXUS" ]; then
+    echo "Erro: interpretador Nexus não encontrado em $NEXUS"
     echo "Por favor, compile o projeto primeiro"
     exit 1
 fi
@@ -67,3 +67,4 @@ if [ "$failed_tests" -gt 0 ]; then
     exit 1
 fi
 exit 0
+
