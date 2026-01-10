@@ -1,0 +1,10 @@
+var a=0; var b=0
+said(a&b) said("|") said(a|b) said("|") said(a^b) said("|") saida(~a)
+a=-1
+said(a&b) said("|") said(a|b) said("|") said(a^b) said("|") saida(~a)
+a=9007199254740991
+b=-9007199254740991
+said(a&b) said("|") said(a|b) said("|") said(a^b) said("|") saida(~a)
+a= 6004799503160661  //  0x15555555555555
+b= -3002399751580330 // -0xaaaaaaaaaaaaa
+said(a&b) said("|") said(a|b) said("|") said(a^b) said("|") saida(~a)

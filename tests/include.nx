@@ -1,0 +1,2 @@
+incluir("./biblioteca.nx")
+saida(value); // 18

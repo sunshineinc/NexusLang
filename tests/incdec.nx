@@ -1,0 +1,9 @@
+var a=1
+saida("    Increment")
+  said(a++) out("|")
+  said(a) out("|")
+  said(++a)
+saida("    Decrement")
+  said(a--) out("|")
+  said(a) out("|")
+  saida(--a)

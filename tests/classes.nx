@@ -1,0 +1,20 @@
+classe Animal {
+  gato(nome){
+    saida("O nome do gato é: " + nome);
+  }
+
+  cao(){
+    saida("Eu sou um cao!");
+  }
+
+  descAnimal(humano){
+    retorne "Humano: " + humano;
+  }
+}
+
+Animal().gato("Bob");
+
+var obj = Animal();
+obj.cao();
+
+saida(obj.descAnimal("Peter"));
