@@ -4,9 +4,9 @@ setlocal enabledelayedexpansion
 :: A versão em .bat é mais simples, não verifica códigos de saída.
 :: Quebras de linha também são ignoradas ao comparar resultados.
 
-set TERLANG=..\build\Debug\ter.exe
-if not exist "%TERLANG%" (
-    echo Erro: interpretador Nexus nao encontrado em %TERLANG%
+set NEXUS=..\build\Debug\nx.exe
+if not exist "%NEXUS%" (
+    echo Erro: interpretador Nexus nao encontrado em %NEXUS%
     echo Por favor, compile o projeto primeiro
     exit /b 1
 )
@@ -29,11 +29,11 @@ for %%f in (*.nx) do (
     :: Executa o teste e captura a saida
     set actual_output=
     if not exist "!arg_file!" (
-        for /f "delims=" %%o in ('%TERLANG% "!ter_file!" 2^>^&1') do set actual_output=!actual_output!%%o
+        for /f "delims=" %%o in ('%NEXUS% "!ter_file!" 2^>^&1') do set actual_output=!actual_output!%%o
     ) else (
         :: set /p args=< arg_file
         for /f "delims=" %%a in (!arg_file!) do set args=!args! %%a
-        for /f "delims=" %%o in ('%TERLANG% "!ter_file!" !args! 2^>^&1') do set actual_output=!actual_output!%%o
+        for /f "delims=" %%o in ('%NEXUS% "!ter_file!" !args! 2^>^&1') do set actual_output=!actual_output!%%o
     )
     set actual_output_escaped=!actual_output!
 
@@ -67,3 +67,4 @@ if %failed_tests% gtr 0 (
     exit /b 1
 )
 exit /b 0
+
