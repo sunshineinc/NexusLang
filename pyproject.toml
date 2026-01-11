@@ -25,12 +25,13 @@ classifiers = [
 ]
 
 [project.urls]
-homepage = ""
-documentation = ""
-source = ""
+homepage = "https://github.com/sunshineinc/nexus.git"
+documentation = "https://github.com/sunshineinc/nexus.git"
+source = "https://github.com/sunshineinc/nexus.git"
 
 [project.scripts]
 nexus = "nexus.__main__:main"
 
 [tool.setuptools.packages.find]
+
 where = ["src"]
