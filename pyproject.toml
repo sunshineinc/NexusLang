@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nexus"
+version = "0.0.1"
+description = "The Nexus Interpreter"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {file = "LICENSE"}
+authors = [
+  {name = "Sunshine"}
+]
+dependencies = []
+keywords = ["interpreter", "language", "compiler", "educational"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.14",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+homepage = ""
+documentation = ""
+source = ""
+
+[project.scripts]
+nexus = "nexus.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

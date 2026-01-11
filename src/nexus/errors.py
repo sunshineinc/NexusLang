@@ -1,0 +1,70 @@
+class Position:
+    def __init__(self, idx, ln, col, fn, ftxt):
+        self.idx = idx
+        self.ln = ln
+        self.col = col
+        self.fn = fn
+        self.ftxt = ftxt
+
+    def advance(self, current_char=None):
+        self.idx += 1
+        self.col += 1
+
+        if current_char == "\n":
+            self.ln += 1
+            self.col = 0
+
+        return self
+
+    def copy(self):
+        return Position(self.idx, self.ln, self.col, self.fn, self.ftxt)
+
+
+class Error:
+    def __init__(self, pos_start, pos_end, error_name, details):
+        self.pos_start = pos_start
+        self.pos_end = pos_end
+        self.error_name = error_name
+        self.details = details
+
+    def as_string(self):
+        result = f"{self.error_name}: {self.details}\n"
+        result += f"Arquivo {self.pos_start.fn}, linha {self.pos_start.ln + 1}"
+        return result
+
+
+class IllegalCharError(Error):
+    def __init__(self, pos_start, pos_end, details):
+        super().__init__(pos_start, pos_end, "Caracter Ilegal", details)
+
+
+class InvalidSyntaxError(Error):
+    def __init__(self, pos_start, pos_end, details=""):
+        super().__init__(pos_start, pos_end, "Sintaxe Invalida", details)
+
+
+class RTError(Error):
+    def __init__(self, pos_start, pos_end, details, context, thrown_value=None):
+        super().__init__(pos_start, pos_end, "Erro em Tempo de Execucao", details)
+        self.context = context
+        self.thrown_value = thrown_value
+
+    def as_string(self):
+        result = self.generate_traceback()
+        result += f"{self.error_name}: {self.details}"
+        return result
+
+    def generate_traceback(self):
+        result = ""
+        pos = self.pos_start
+        ctx = self.context
+
+        while ctx:
+            result = (
+                f"  Arquivo {pos.fn}, linha {str(pos.ln + 1)}, em {ctx.display_name}\n"
+                + result
+            )
+            pos = ctx.parent_entry_pos
+            ctx = ctx.parent
+
+        return "Rastreamento (chamada mais recente):\n" + result
