@@ -1,6 +1,6 @@
 #!/bin/bash
 
-NEXUS="../build/Ter"
+NEXUS="../build/nx"
 if [ ! -f "$NEXUS" ]; then
     echo "Erro: interpretador Nexus não encontrado em $NEXUS"
     echo "Por favor, compile o projeto primeiro"
@@ -67,5 +67,6 @@ if [ "$failed_tests" -gt 0 ]; then
     exit 1
 fi
 exit 0
+
 
 
