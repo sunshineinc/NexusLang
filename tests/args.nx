@@ -1,3 +1,0 @@
-var params = args()
-saida(params)
-saida(params[1])
