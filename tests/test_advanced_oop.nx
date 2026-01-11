@@ -1,0 +1,41 @@
+IMPRIMIR "--- Teste Avançado de POO e Closure ---"
+
+# This function creates a 'greeter' function
+FUNCAO create_greeter(greeting)
+  FUNCAo greeter_func(name)
+    RETORNE greeting + ", " + name + "!"
+  FIMFUNCAO
+  RETORNE greeter_func
+FIMFUNCAO
+
+IMPRIMIR "Criando funções de boas-vindas..."
+DECLARAR say_hello = create_greeter("Oi")
+DECLARAR say_hi = create_greeter("Ola")
+
+# Create a class that holds a function
+CLASSE Person
+  FUNCAO init(SELF, name, greeter_func)
+    EU.name = name
+    EU.greeter = greeter_func # Store the function as an attribute
+  FIMFUNCAO
+  
+  FUNCAO greet(SELF)
+    # Call the stored function, passing in our name
+    DECLARAR message = EU.greeter(EU.name)
+    IMPRIMIR message
+  FIMFUNCAO
+FIMCLASSE
+
+IMPRIMIR "--- Criando pessoas ---"
+DECLARAR alex = NEW Person("Alex", say_hello)
+DECLARAR bob = NEW Person("Bob", say_hi)
+
+IMPRIMIR "--- Testando chamadas de método ---"
+alex.greet() # Should print "Hello, Alex!"
+bob.greet()  # Should print "Hi, Bob!"
+
+# --- Re-assigning an attribute ---
+IMPRIMIR "--- Reatribuindo atributo ---"
+alex.greeter = say_hi # Change Alex's greeter function
+
+alex.greet() # Should now print "Hi, Alex!"
