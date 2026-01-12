@@ -116,14 +116,14 @@ def is_complete(text):
 
 
 def main():
-    GLADLANG_VERSION = "0.1.3"
+    GLADLANG_VERSION = "0.0.1"
     GLADLANG_HELP = f"""
 Uso: nexus [comando] [arquivo] [argumentos...]
 
 Comandos:
-  <nenhum argumento>        Inicia o shell interativo do GladLang.
-  [arquivo.nx]            Executa um arquivo de script GladLang.
-  [arquivo.nx] [args]     Executa o script e passa os argumentos para INPUT().
+  <nenhum argumento>        Inicia o shell interativo do Nexus.
+  [arquivo.nx]            Executa um arquivo de script Nexus.
+  [arquivo.nx] [args]     Executa o script e passa os argumentos para ENTRADA().
   --help                    Mostra esta mensagem de ajuda e sai.
   --version                 Mostra a versão do interpretador e sai.
 """
